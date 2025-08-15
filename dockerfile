@@ -14,7 +14,7 @@ RUN apt-get update && apt-get install -y \
     libpq-dev \
     curl \
     && rm -rf /var/lib/apt/lists/*
-    
+
 RUN apt-get update && apt-get install -y netcat-openbsd && rm -rf /var/lib/apt/lists/*
 RUN apt-get update && apt-get install -y postgresql-client
 # Install Python dependencies
@@ -28,5 +28,5 @@ COPY . /app/
 EXPOSE 8000
 
 # Default command (will be overridden in docker-compose.yml)
-CMD ["gunicorn", "vividmind.wsgi:application", "--bind", "0.0.0.0:8000"]
+CMD ["gunicorn", "storagehouse.wsgi:application", "--bind", "0.0.0.0:8000"]
 
