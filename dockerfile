@@ -14,6 +14,8 @@ RUN apt-get update && apt-get install -y \
     libpq-dev \
     curl \
     && rm -rf /var/lib/apt/lists/*
+    
+RUN apt-get update && apt-get install -y netcat-openbsd && rm -rf /var/lib/apt/lists/*
 RUN apt-get update && apt-get install -y postgresql-client
 # Install Python dependencies
 COPY requirements.txt /app/
