@@ -53,6 +53,7 @@ services:
       - static_volume:/app/static
       - media_volume:/app/media
       - ./letsencrypt/webroot:/var/www/certbot
+      - ./letsencrypt/certs:/etc/letsencrypt
     depends_on:
       - web
     networks:
