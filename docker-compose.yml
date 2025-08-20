@@ -12,6 +12,8 @@ services:
     ports:
       - "5432:5432"
     restart: always
+    networks:
+      - app-network
 
   web:
     build: .
@@ -38,6 +40,8 @@ services:
     env_file:
       - .env
     restart: always
+    networks:
+      - app-network
 
   nginx:
     image: nginx:1.24
@@ -49,8 +53,17 @@ services:
       - static_volume:/app/static
       - media_volume:/app/media
       - ./letsencrypt/webroot:/var/www/certbot
+    depends_on:
+      - web
+    networks:
+      - app-network
+    restart: always
 
 volumes:
   postgres_data:
   static_volume:
   media_volume:
+
+networks:
+  app-network:
+    driver: bridge
