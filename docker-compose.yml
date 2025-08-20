@@ -49,7 +49,7 @@ services:
       - static_volume:/app/static
       - media_volume:/app/media
       - ./letsencrypt/webroot:/var/www/certbot
-      - ./letsencrypt/certs:/etc/letsencrypt
+      - /etc/letsencrypt:/etc/letsencrypt:ro   # <-- mount host certificates
     depends_on:
       - web
     networks:
