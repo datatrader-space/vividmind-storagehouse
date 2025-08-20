@@ -50,6 +50,7 @@ services:
       - media_volume:/app/media
       - ./letsencrypt/webroot:/var/www/certbot
       - /etc/letsencrypt:/etc/letsencrypt:ro   # <-- mount host certificates
+      - ./letsencrypt/certs:/etc/letsencrypt
     depends_on:
       - web
     networks:
